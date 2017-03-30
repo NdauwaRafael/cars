@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<!--
+  * Please see the included README.md file for license terms and conditions.
+  -->
+<head>
+    <title>Blank App Designer Cordova Web App Project Template</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <!-- <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1"> -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+      
+      
+  $( function() {
+      
+    $( "#accordion" ).accordion({heightStyle: 'panel',
+                                         event: "click",
+                                        active: false,
+                                        collapsible: true,
+                                        autoHeight: false
+                                
+                                });
+  } );
+  </script>    
+     
+    <style>
+      html,body { height: 100%; margin: 0px; padding: 0px; }
+      #left-full { background: #008B8B; color: aliceblue; height: 100%; margin-top: -20px;  min-height: 120vh; }        
+               
+        #centered {
+            
+        }    
+        @-ms-viewport { width: 100vw ; min-zoom: 100% ; zoom: 100% ; }          @viewport { width: 100vw ; min-zoom: 100% zoom: 100% ; }
+        @-ms-viewport { user-zoom: fixed ; min-zoom: 100% ; }                   @viewport { user-zoom: fixed ; min-zoom: 100% ; }
+        /*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
+ @media only screen and (max-width: 320px) {
+
+   body { font-size: 2em; }
+     h2 { font-size: 2em; }
+
+}       
+
+        #accordion h4 {
+            font-size: 90%;
+        }
+      #accordion ul {
+            padding-left: 10px;
+            margin-left: 2px;
+          
+        }
+         #accordion li {
+            font-size: 90%;
+            list-style: none;
+             margin-left: 0px;
+             padding-left: 0px;
+             
+        }    
+    </style>
+
+    <link rel="stylesheet" href="css/mystyle.css">
+    <link rel="stylesheet" href="css/app.css">
+    <script src="cordova.js" id="xdkJScordova_"></script>
+    <script src="js/app.js"></script>           <!-- for your event code, see README and file comments for details -->
+    <script src="js/init-app.js"></script>      <!-- for your init code, see README and file comments for details -->
+    <script src="xdk/init-dev.js"></script>     <!-- normalizes device and document ready events, see file for details -->
+    <script src="js/myForms.js"></script>
+
+</head>
+
+
+<body style="background-image: url(../images/back.jpg); background-size: cover; padding-top: 70px">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+           <span class="hamburger" onclick="openNav()">&#9776;</span>
+             <div id="mySidenav" class="sidenav">
+              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+
+                 
+                     <div id="accordion" class="accord">
+                         <a><h4><img src="icons/user.png"> <span id="username"></span></h4></a>
+                              <div>
+                                <ul>
+                                  <a href="#">Profile</a>
+                                  <a href="login.html"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+                                </ul>
+                              </div>
+                         
+                         <a><h4><img src="icons/list.png"> Navigate</h4></a>
+                              <div>
+                                <ul>
+                                  <a href="index.html">Home</a>
+                                  <a href="#">Services</a>
+                                </ul>
+                              </div> 
+                         
+    
+                         
+                         <a><h4><img src="icons/speech-bubble.png"> My Requests</h4></a>
+                      <div>
+                        <ul>
+                          <li><a>New</a></li>
+                          <li><a>Accepted</a></li>
+                          <li><a>Report</a></li>
+                        </ul>
+                      </div>
+                         
+                      <a><h4><img src="icons/documents.png">Stats</h4></a>
+                      <div>
+                        <ul>
+                          <li><a>Accounting</a></li>
+                          <li><a>Report</a></li>
+                        </ul>
+                      </div>
+
+                    </div>                   
+            </div>
+                  <span class="hamburger1 pull-right">
+                   <span>Car Hire <img src="icons/tourist.png"> </span>  Mobile 
+                 </span>
+      </div>
+    </nav>     
+    
+ <div class="imagearea">           
+  <div class="col-xs-12" style="background-color:rgba(0, 0, 0, 0.5); color:#f5f5f5 !important; margin-top: -20px;  min-height: 100vh;" >
+    <h3>Karibu sana <?php echo " hallo" ?></h3>
+      <button onclick="loggin()">AHem</button>
+      <div id="hol"></div>
+ </div>   
+            
+        </div>
+    
+
+</body>
+</html>

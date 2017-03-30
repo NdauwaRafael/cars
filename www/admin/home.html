@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<!--
+  * Please see the included README.md file for license terms and conditions.
+  -->
+<head>
+    <title>Blank App Designer Cordova Web App Project Template</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <!-- <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1"> -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="js/myForms.js"></script>
+  <script>
+    $(document).ready(function(){
+      
+                $.getJSON('http://localhost/server/session.php', { get_param: 'value' }, function(data) {
+                    $.each(data, function(index, element) {
+                        var usernamed = element.username;
+                        var emaild = element.email;
+                        $('#username').html(usernamed);
+                        $('#user').text(usernamed);
+                        $("#email").text(emaild);
+                    });
+                });
+        
+    
+    
+    }); 
+     
+  $( function() {
+      
+    $( "#accordion" ).accordion({heightStyle: 'panel',
+                                         event: "click",
+                                        active: false,
+                                        collapsible: true,
+                                        autoHeight: false
+                                
+                                });
+  } );
+  </script>    
+     
+    <style>
+      html,body { height: 100%; margin: 0px; padding: 0px; }
+      #left-full { background: #008B8B; color: aliceblue; height: 100%; margin-top: -20px;  min-height: 120vh; }        
+               
+        #centered {
+            
+        }    
+        @-ms-viewport { width: 100vw ; min-zoom: 100% ; zoom: 100% ; }          @viewport { width: 100vw ; min-zoom: 100% zoom: 100% ; }
+        @-ms-viewport { user-zoom: fixed ; min-zoom: 100% ; }                   @viewport { user-zoom: fixed ; min-zoom: 100% ; }
+        /*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
+ @media only screen and (max-width: 320px) {
+
+   body { font-size: 2em; }
+     h2 { font-size: 2em; }
+
+}       
+
+        #accordion h4 {
+            font-size: 90%;
+        }
+      #accordion ul {
+            padding-left: 10px;
+            margin-left: 2px;
+          
+        }
+         #accordion li {
+            font-size: 90%;
+            list-style: none;
+             margin-left: 0px;
+             padding-left: 0px;
+             
+        }    
+    </style>
+
+    <link rel="stylesheet" href="css/app.css">
+    <script src="cordova.js" id="xdkJScordova_"></script>
+    <script src="js/app.js"></script>           <!-- for your event code, see README and file comments for details -->
+    <script src="js/init-app.js"></script>      <!-- for your init code, see README and file comments for details -->
+    <script src="xdk/init-dev.js"></script>     <!-- normalizes device and document ready events, see file for details -->
+
+</head>
+
+
+<body style="background-image: url(../images/back.jpg); background-size: cover; padding: -15px">
+   <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle pull-left" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+    <div class="pull-right">
+       <a class="navbar-brand" href="#">Car Hire</a>  
+    </div>
+     
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="../index.html">Home</a></li>
+        <li><a href="#">Explore</a></li>
+        <li><a href="#">FAQs</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="login.html"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      </ul>
+    </div>
+  </div>
+    </nav>
+    
+    <div class="imagearea">           
+  <div class="col-xs-4" id="left-full">
+      <section id="username">User Name</section>
+ <div id="accordion">
+  <h4><img src="../icons/suv.png"> <u>Cars</u></h4>
+  <div>
+    <ul>
+      <li>Add</li>
+      <li>Modify</li>
+    </ul>
+  </div>
+  <h4><img src="../icons/speech-bubble.png"> <u>Requests</u></h4>
+  <div>
+    <ul>
+      <li>New</li>
+      <li>Accepted</li>
+      <li>Report</li>
+    </ul>
+  </div>
+  <h4><img src="../icons/electric-car.png"><u>Stats</u></h4>
+  <div>
+    <ul>
+      <li>Price list</li>
+      <li>Accounting</li>
+      <li>Report</li>
+    </ul>
+  </div>
+
+</div>     
+  </div>
+        
+  <div class="col-xs-8" style="background-color:rgba(0, 0, 0, 0.5); color:#f5f5f5 !important; margin-top: -20px;  min-height: 100vh;" >
+      <h3>Karibu <span class="glyphicon glyphicon-user" id="user"> </span> </h3><span>(<i id="email"></i>)</span>
+
+      
+
+      
+ </div>   
+            
+        </div>
+    
+
+</body>
+</html>

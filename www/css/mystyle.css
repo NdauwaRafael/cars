@@ -1,0 +1,74 @@
+.hamburger {
+  font-size: 30px;
+  cursor: pointer;
+  top: 50px;
+  left: 20px;
+
+}
+
+.hamburger1 {
+  font-size: 20px;
+  cursor: pointer;
+  top: 20px;
+  right: 20px;
+    color: #4db6ac;
+
+} 
+    
+
+#mySidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0.5s;
+}
+
+#mySidenav h2{
+   padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s   
+}
+
+#mySidenav .accord{
+   padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s     
+}
+
+#mySidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s
+}
+
+#mySidenav a:hover,
+#mySidenav .offcanvas a:focus {
+  color: #f1f1f1;
+}
+
+#mySidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 55px;
+  margin-left: 50px;
+}
+body {
+  height: 200em;
+  position: relative;
+}   

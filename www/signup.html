@@ -1,0 +1,207 @@
+<html>
+<!--
+  * Please see the included README.md file for license terms and conditions.
+  -->
+<head>
+    <title>Blank App Designer Cordova Web App Project Template</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <!-- <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1"> -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+		
+		<!-- Google Fonts -->
+		<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+     
+    <style>
+
+        @-ms-viewport { width: 100vw ; min-zoom: 100% ; zoom: 100% ; }          @viewport { width: 100vw ; min-zoom: 100% zoom: 100% ; }
+        @-ms-viewport { user-zoom: fixed ; min-zoom: 100% ; }                   @viewport { user-zoom: fixed ; min-zoom: 100% ; }
+        /*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
+
+h1.title { 
+	font-size: 50px;
+	font-family: 'Passion One', cursive; 
+	font-weight: 300; 
+}
+
+hr{
+	width: 10%;
+	color: #fff;
+}
+
+.form-group{
+	margin-bottom: 15px;
+}
+
+label{
+	margin-bottom: 15px;
+}
+
+input,
+input::-webkit-input-placeholder {
+    font-size: 11px;
+    padding-top: 3px;
+}
+
+.main-login{
+ 	background-color: #fff;
+    /* shadows and rounded borders */
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+
+}
+
+.main-center{
+ 	margin-top: 20px;
+ 	margin: 0 auto;
+ 	max-width: 88%;
+    padding: 40px 40px;
+
+}
+
+.login-button{
+	margin-top: 5px;
+}
+
+.login-register{
+	font-size: 11px;
+	text-align: center;
+}
+
+
+    </style>
+
+    <link rel="stylesheet" href="css/app.css">
+    <script src="cordova.js" id="xdkJScordova_"></script>
+    <script src="js/app.js"></script>           <!-- for your event code, see README and file comments for details -->
+    <script src="js/init-app.js"></script>     <!-- for your init code, see README and file comments for details -->
+    <script src="xdk/init-dev.js"></script>     <!-- normalizes device and document ready events, see file for details -->
+    <script src="js/validateRegForm.js"></script>
+    <script src="js/myForms.js"></script>
+    <script>
+       $(document).ready(function(){
+         $('#regBtn').click(function(){
+                var username1 = $('.username').val();
+                var email1 = $('#email').val();
+                var password1 = $('#password').val();
+                var confirmpassword1 = $('#password_confirm').val();
+
+                if(username1==''|| email1==''|| password1==''|| confirmpassword1==''){
+                    alert('fill in empty fields');
+                }else{
+                    if( $.post('http://localhost/server/register.php',{username:username1, email:email1, password:password1, confirmpassword:confirmpassword1}, function(data){
+
+                    })){
+                     alert('successfuly added');
+                        $('#status').html('<div class="alert alert-success" role="alert"><i class="fa fa-user-plus" aria-hidden="true"></i> successfuly added!! </div>');
+                        $('#regForm')[0].reset();                      
+                    }
+                   
+                }
+         }); 
+           
+           
+       }); 
+
+    </script>
+</head>
+    
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle pull-left" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+    <div class="pull-right">
+       <a class="navbar-brand" href="#">Car Hire</a>  
+    </div>
+     
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="index.html">Home</a></li>
+        <li><a href="#">Explore</a></li>
+        <li><a href="#">FAQs</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+    
+<div class="container">
+  <div class="row">
+  	<div class="col-md-10">
+        <div id="status"></div>
+    
+    
+          <form class="form-horizontal" id="regForm">
+          <fieldset>
+            <div id="legend">
+              <legend class="">Register</legend>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="username">Username</label>
+              <div class="controls">
+                <input type="text" id="txt" name="username" placeholder="" class="form-control username" onkeyup = "Validate(this)" required>
+              </div>
+            </div>           
+         
+            <div class="control-group">
+              <label class="control-label" for="email">E-mail</label>
+              <div class="controls">
+                <input type="email" id="email" name="email" placeholder="" class="form-control"  onchange="email_validate(this.value);" required>
+              </div>
+            </div>
+         
+            <div class="control-group">
+              <label class="control-label" for="password">Password</label>
+              <div class="controls">
+                <input type="password" id="password" name="password" placeholder="" class="form-control" required>
+                <p class="help-block" id="confirmMessage">Password should be at least 6 characters</p>
+              </div>
+            </div>
+         
+            <div class="control-group">
+              <label class="control-label" for="password_confirm">Password (Confirm)</label>
+              <div class="controls">
+                <input type="password" id="password_confirm" name="password_confirm" placeholder="" class="form-control" onkeyup="checkPass(); return false;" required>
+                <p class="help-block" id="confirmMessage">Please confirm password</p>
+              </div>
+            </div>
+         
+            <div class="control-group">
+              <!-- Button -->
+              <div class="controls">
+                <button type="button" id="regBtn" class="btn btn-success">Register</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+    
+    </div> 
+  </div>
+</div>
+                           
+  
+</body>    
+    
+    
+</html>
