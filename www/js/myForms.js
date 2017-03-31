@@ -20,11 +20,13 @@ function checkPass()
         message.style.color = goodColor;
         message.innerHTML = "Passwords Match";
         $('#regBtn').prop('disabled', false);
+        $('#regOwner').prop('disabled', false);
     }else{
         //The passwords do not match.
         //Set the color to the bad color and
         //notify the user.
         $('#regBtn').prop('disabled', true);
+        $('#regOwner').prop('disabled', true);
         pass2.style.backgroundColor = badColor;
         message.style.color = badColor;
         message.innerHTML = "Passwords Do Not Match!"
@@ -51,16 +53,20 @@ function Validate(txt) {
 function email_validate(email)
 {
 var regMail = /^([_a-zA-Z0-9-]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+([a-zA-Z]{2,3})$/;
-
+   var status = document.getElementById("emailstatus");
     if(regMail.test(email) == false)
-    {
-    document.getElementById("status").innerHTML    = "<span class='warning'>Email address is not valid yet.</span>";
+    {    
+    document.getElementById("emailstatus").innerHTML    = "<span class='warning'>Email address is not valid yet.</span>";
+        status.style.color = "#f44336";
         $('#regBtn').prop('disabled', true);
+        $('#regOwner').prop('disabled', true);
     }
     else
     {
-    document.getElementById("status").innerHTML	= "<span class='valid'>Thanks, you have entered a valid Email address!</span>";	
+    document.getElementById("emailstatus").innerHTML	= "<span class='valid'>Thanks, you have entered a valid Email address!</span>";	
+        status.style.color = "#a5d6a7";
         $('#regBtn').prop('disabled', false);
+        $('#regOwner').prop('disabled', false);
     }
 }
 // validate date of birth
@@ -131,6 +137,78 @@ function loggin(field1, field2){
                 });
             
     
+})
+    
+/*================================================================================================
+          ALL SCRIPTS SPECIFIC FOR OWNER HOME
+==================================================================================================*/
+    $(document).ready(function(){
+        
+      
+                $.getJSON('http://localhost/server/ownerSession.php', { get_param: 'value' }, function(data) {
+                    $.each(data, function(index, element) {
+                        var ownerIdno = element.idno;
+                        var ownerFname = element.firstname;
+                        var ownerLname = element.lastname;
+                        var ownerEmail = element.email;
+                        $('#ownername').html(ownerFname + " " + ownerLname);
+                        $('#owner').text(ownerFname + " "+ ownerLname);
+                        $("#ownerEmail").text(ownerEmail);
+                    });
+                });
+            
+    
+})    
+
+/*=====================================================================================================
+           Accordion
+=======================================================================================================*/    
+  $( function() {
+      
+    $( "#accordion" ).accordion({heightStyle: 'panel',
+                                         event: "click",
+                                        active: false,
+                                        collapsible: true,
+                                        autoHeight: false
+                                
+                                });
+  } );
+
+/*=================================================================================================================
+                  GROBAL FUNCTIONS
+==================================================================================================================*/
+$(Document).ready(function(){
+    function userLoggedin(){
+        
+                $.getJSON('http://localhost/server/session.php', { get_param: 'value' }, function(data) {
+                    $.each(data, function(index, element) {
+                        var userId = element.id;
+                        if(id>0){
+                            return true;
+                        }else{
+                            return flase;
+                        }
+
+                    });
+                });
+                    
+        
+    }
+               
+ 
+    function ownerLoggedin(){
+                $.getJSON('http://localhost/server/ownerSession.php', { get_param: 'value' }, function(data) {
+                    $.each(data, function(index, element) {
+                        var ownerId = element.id;
+                        if(ownerId>0){
+                           window.location.href='home.html';
+                        }
+
+                    });
+                });        
+        
+        
+    }
 })
 
 

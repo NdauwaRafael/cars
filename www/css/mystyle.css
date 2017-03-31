@@ -69,6 +69,29 @@
   margin-left: 50px;
 }
 body {
-  height: 200em;
+  padding-top: 70px;
   position: relative;
-}   
+}  
+/*========================================================================================================
+          Accordion styles
+==============================================================================================================*/
+   body { font-size: 2em; }
+     h2 { font-size: 2em; }
+
+}       
+
+        #accordion h4 {
+            font-size: 90%;
+        }
+      #accordion ul {
+            padding-left: 10px;
+            margin-left: 2px;
+          
+        }
+         #accordion li {
+            font-size: 90%;
+            list-style: none;
+             margin-left: 0px;
+             padding-left: 0px;
+             
+        }
