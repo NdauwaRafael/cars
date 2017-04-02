@@ -1,0 +1,44 @@
+<script>
+$(document).ready(function(){
+    $("#regCar").click(function(){
+        var models = $("#carmodel").val;
+        var plates = $("#platenumber").val;
+        
+        if(models =='' || plates==''){
+            $('#mstatus').html('Field is required');                     
+        }else{
+            $.post('http://localhost/server/registerCar.php', {model:models, plate:plates}, function(data){
+                $('#mstatus').text(data);
+                $("#regcarform")[0].reset();
+            });
+        }
+
+      
+        
+    })
+})
+
+</script>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Add Car</h3>
+  </div>
+  <div class="panel-body">
+        <form id="regcarform">
+          <div class="form-group">
+            <label for="car Model">Car Model</label>
+            <input type="text" class="form-control" id="carmodel" placeholder="Input Car Model">
+              <div id="mstatus"></div>
+          </div>
+            
+           <div class="form-group">
+            <label for="plate number">Plate Number</label>
+            <input type="text" class="form-control" id="platenumber" placeholder="add Plate NUmber">
+          </div>           
+
+
+
+          <button type="button" id="regCar" class="btn btn-default">Add Now!!</button>
+        </form>
+  </div>
+</div>

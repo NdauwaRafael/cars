@@ -158,6 +158,16 @@ function loggin(field1, field2){
                 });
             
     
+        
+$("#addCar").click(function(){
+    $('#imagearea').load('addCar.html');
+}) 
+
+$("#viewCar").click(function(){
+    $('#imagearea').load('viewCar.html');
+}) 
+        
+        
 })    
 
 /*=====================================================================================================
@@ -178,37 +188,24 @@ function loggin(field1, field2){
                   GROBAL FUNCTIONS
 ==================================================================================================================*/
 $(Document).ready(function(){
-    function userLoggedin(){
+
         
                 $.getJSON('http://localhost/server/session.php', { get_param: 'value' }, function(data) {
                     $.each(data, function(index, element) {
-                        var userId = element.id;
-                        if(id>0){
-                            return true;
-                        }else{
-                            return flase;
-                        }
 
+                       
                     });
+                    
                 });
                     
-        
-    }
-               
- 
-    function ownerLoggedin(){
-                $.getJSON('http://localhost/server/ownerSession.php', { get_param: 'value' }, function(data) {
-                    $.each(data, function(index, element) {
-                        var ownerId = element.id;
-                        if(ownerId>0){
-                           window.location.href='home.html';
-                        }
 
-                    });
-                });        
-        
-        
+   
+               
+    function ownerLoggedin(){
+
     }
+        
+
 })
 
 

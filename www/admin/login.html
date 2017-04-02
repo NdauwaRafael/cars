@@ -40,7 +40,17 @@
     <script src="../xdk/init-dev.js"></script>     <!-- normalizes device and document ready events, see file for details -->
     <script src="../js/myForms.js"></script>
 <script>
+    
+    
       $(document).ready( function(){
+          
+                 $.getJSON('http://localhost/server/ownerSession.php', { get_param: 'value' }, function(data) {
+                      $.each(data, function(index, element) {
+                      window.location.href='home.html';
+                         }) 
+                });         
+          
+          
          $('#loginOwner').click(function(){
                 var email1 = $('#email').val();
                 var password1 = $('#password').val();
