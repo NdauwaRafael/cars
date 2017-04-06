@@ -1,19 +1,20 @@
+<script src="../js/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
     $("#regCar").click(function(){
-        var models = $("#carmodel").val;
-        var plates = $("#platenumber").val;
+        var models = $("#carmodel").val();
+        var plates = $("#platenumber").val();
         
         if(models =='' || plates==''){
-            $('#mstatus').html('Field is required');                     
+            $('#mstatus').html('<div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Fill in Empty fields and proceed</div>');                     
         }else{
             $.post('http://localhost/server/registerCar.php', {model:models, plate:plates}, function(data){
-                $('#mstatus').text(data);
+                $('#mstatus').html(data);
                 $("#regcarform")[0].reset();
             });
         }
 
-      
+     
         
     })
 })
@@ -23,12 +24,13 @@ $(document).ready(function(){
   <div class="panel-heading">
     <h3 class="panel-title">Add Car</h3>
   </div>
+    <div id="mstatus"></div>
   <div class="panel-body">
         <form id="regcarform">
           <div class="form-group">
             <label for="car Model">Car Model</label>
             <input type="text" class="form-control" id="carmodel" placeholder="Input Car Model">
-              <div id="mstatus"></div>
+              
           </div>
             
            <div class="form-group">

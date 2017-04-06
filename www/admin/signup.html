@@ -12,25 +12,26 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-   
-     
+
+
     <style>
       html,body { height: 100%; margin: 0px; padding: 0px; }
-      #left-full { background: #008B8B; color: aliceblue; height: 100%; margin-top: -20px;  min-height: 120vh; }        
-               
+      #left-full { background: #008B8B; color: aliceblue; height: 100%; margin-top: -20px;  min-height: 120vh; }
+
         #centered {
-            
-        }    
+
+        }
         @-ms-viewport { width: 100vw ; min-zoom: 100% ; zoom: 100% ; }          @viewport { width: 100vw ; min-zoom: 100% zoom: 100% ; }
         @-ms-viewport { user-zoom: fixed ; min-zoom: 100% ; }                   @viewport { user-zoom: fixed ; min-zoom: 100% ; }
         /*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
- @media only screen and (max-width: 320px) {
 
-    
+
     </style>
-
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="../js/bootstrap.js"></script>
     <link rel="stylesheet" href="../css/mystyle.css">
     <link rel="stylesheet" href="../css/app.css">
     <script src="cordova.js" id="xdkJScordova_"></script>
@@ -45,32 +46,32 @@
                 var fname = $('.fname').val();
                 var lname = $('.lname').val();
                 var idno1 = $('#idno').val();
-             
+
                 var email1 = $('#email').val();
                 var password1 = $('#password').val();
                 var confirmpassword1 = $('#password_confirm').val();
 
                 if(fname==''|| lname==''|| email1==''|| password1==''|| confirmpassword1==''){
-                   $('#status').html('<div class="alert alert-danger" role="alert"><i class="fa fa-user-plus" aria-hidden="true"></i> Fill In all required fields </div>');
+                   $('#statu').html('<div class="alert alert-danger" role="alert"><i class="fa fa-user-plus" aria-hidden="true"></i> Fill In all required fields </div>');
                 }else{
                     if( $.post('http://localhost/server/ownerRegister.php',{idno:idno1, firstname:fname, lastname:lname, email:email1, password:password1, cpassword:confirmpassword1}, function(data){
                        $('#status').html(data);
                         $('#regOwnerForm')[0].reset();
                     })){
                      alert('successfuly added');
-                                              
+
                     }
-                   
+
                 }
-         }); 
-           
-           
-       });      
-      
-  </script>     
+         });
+
+
+       });
+
+  </script>
 </head>
 
-    
+
 <body>
 <body style="background-image: url(../images/back.jpg);  padding-top: 70px; max-height: 150vh;">
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -80,7 +81,7 @@
               <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
 
-                 
+
                      <div id="accordion" class="accord">
                          <a><h4><img src="../icons/user.png"> <span id="username">User Controls</span></h4></a>
                               <div>
@@ -88,31 +89,31 @@
                                   <a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a>
                                 </ul>
                               </div>
-                         
+
                          <a><h4><img src="../icons/list.png"> Navigate</h4></a>
                               <div>
                                 <ul>
                                   <a href="../index.html">Go Home</a>
                                   <a href="#">Services</a>
                                 </ul>
-                              </div> 
-                         
-    
-                         
+                              </div>
 
-                    </div>                   
+
+
+
+                    </div>
             </div>
                   <span class="hamburger1 pull-right">
-                   <span>Car Hire <img src="../icons/tourist.png"> </span>  Mobile 
+                   <span>Car Hire <img src="../icons/tourist.png"> </span>  Mobile
                  </span>
       </div>
-    </nav>     
-    
-<div class="container" style="background-color:rgba(0, 0, 0, 0.5); color:#f5f5f5 !important; margin-top: -20px; padding-top:60px;  min-height:150vh;">
+    </nav>
+
+<div class="container" style="background-color:rgba(0, 0, 0, 0.5); color:#f5f5f5 !important; margin-top: -20px; padding-top:60px;  min-height:200vh;">
   <div class="row">
   	<div class="col-md-10">
         <div id="status" ></div>
-    
+
           <form class="form-horizontal" id="regOwnerForm"  >
           <fieldset>
             <div id="legend">
@@ -125,23 +126,23 @@
                 <p class="help-block">Username can contain any letters or numbers, without spaces</p>
               </div>
             </div>
-              
+
              <div class="control-group">
               <label class="control-label" for="lastname">Lastname</label>
               <div class="controls">
                 <input type="text" id="txt" name="lastname" placeholder="" class="form-control input-lg lname" onkeyup = "Validate(this)">
                 <p class="help-block">Username can contain any letters or numbers, without spaces</p>
               </div>
-            </div> 
-              
+            </div>
+
              <div class="control-group">
               <label class="control-label" for="lastname">Identity Number</label>
               <div class="controls">
                 <input type="text" id="idno" name="lastname" placeholder="" class="form-control input-lg lname">
                 <p class="help-block">Username can contain any letters or numbers, without spaces</p>
               </div>
-            </div>               
-         
+            </div>
+
             <div class="control-group">
               <label class="control-label" for="email">E-mail</label>
               <div class="controls">
@@ -149,7 +150,7 @@
                 <p class="help-block" id="emailstatus" style="font-style:bold;">Please provide your E-mail</p>
               </div>
             </div>
-         
+
             <div class="control-group">
               <label class="control-label" for="password">Password</label>
               <div class="controls">
@@ -157,7 +158,7 @@
                 <p class="help-block" id="confirmMessage">Password should be at least 6 characters</p>
               </div>
             </div>
-         
+
             <div class="control-group">
               <label class="control-label" for="password_confirm">Password (Confirm)</label>
               <div class="controls">
@@ -165,7 +166,7 @@
                 <p class="help-block" id="confirmMessage">Please confirm password</p>
               </div>
             </div>
-         
+
             <div class="control-group">
               <!-- Button -->
               <div class="controls">
@@ -174,12 +175,12 @@
             </div>
           </fieldset>
         </form>
-    
-    </div> 
+
+    </div>
   </div>
 </div>
-  
-</body>    
-    
-    
+
+</body>
+
+
 </html>

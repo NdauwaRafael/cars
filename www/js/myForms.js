@@ -1,3 +1,4 @@
+
 function checkPass()
 {
        
@@ -187,26 +188,7 @@ $("#viewCar").click(function(){
 /*=================================================================================================================
                   GROBAL FUNCTIONS
 ==================================================================================================================*/
-$(Document).ready(function(){
 
-        
-                $.getJSON('http://localhost/server/session.php', { get_param: 'value' }, function(data) {
-                    $.each(data, function(index, element) {
-
-                       
-                    });
-                    
-                });
-                    
-
-   
-               
-    function ownerLoggedin(){
-
-    }
-        
-
-})
 
 
 

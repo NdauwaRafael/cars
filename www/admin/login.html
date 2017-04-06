@@ -13,65 +13,62 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
+
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-   
-     
+
+
     <style>
       html,body { height: 100%; margin: 0px; padding: 0px; }
-      #left-full { background: #008B8B; color: aliceblue; height: 100%; margin-top: -20px;  min-height: 120vh; }        
-               
+      #left-full { background: #008B8B; color: aliceblue; height: 100%; margin-top: -20px;  min-height: 120vh; }
+
         #centered {
-            
-        }    
+
+        }
         @-ms-viewport { width: 100vw ; min-zoom: 100% ; zoom: 100% ; }          @viewport { width: 100vw ; min-zoom: 100% zoom: 100% ; }
         @-ms-viewport { user-zoom: fixed ; min-zoom: 100% ; }                   @viewport { user-zoom: fixed ; min-zoom: 100% ; }
         /*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
- @media only screen and (max-width: 320px) {
 
-    
     </style>
-
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="../js/bootstrap.js"></script>
     <link rel="stylesheet" href="../css/mystyle.css">
     <link rel="stylesheet" href="../css/app.css">
     <script src="cordova.js" id="xdkJScordova_"></script>
     <script src="../js/app.js"></script>           <!-- for your event code, see README and file comments for details -->
     <script src="../js/init-app.js"></script>      <!-- for your init code, see README and file comments for details -->
     <script src="../xdk/init-dev.js"></script>     <!-- normalizes device and document ready events, see file for details -->
-    <script src="../js/myForms.js"></script>
+     <script src="../js/myForms.js"></script> 
+    
 <script>
-    
-    
-      $(document).ready( function(){
-          
+
+      $(document).ready(function(){
                  $.getJSON('http://localhost/server/ownerSession.php', { get_param: 'value' }, function(data) {
                       $.each(data, function(index, element) {
-                      window.location.href='home.html';
+                      window.location.replace('home.html');
                          }) 
-                });         
+                }); 
           
           
          $('#loginOwner').click(function(){
                 var email1 = $('#email').val();
                 var password1 = $('#password').val();
-
                 if(email1==''|| password1==''){
                      $('#statu').html('<div class="alert alert-danger" role="alert"><i class="fa fa-user-plus" aria-hidden="true"></i> Fill in required form </div>');
                     
                 }else{
-                    if( $.post('http://localhost/server/loginOwner.php',{email:email1, password:password1}, function(data){
+                  $.post('http://localhost/server/loginOwner.php',{email:email1, password:password1}, function(data){
                          var num = data;
                         $('#statu').html(data);
                         $('#logOwnerForm')[0].reset();                         
-                    })){
-                     alert('successfuly added');
-                                            
-                    }
+                    });
                    
-                }
-         });   
-      });       
-    
+                }               
+ 
+         });
+      });
+
         function onLoad()
         {
               document.addEventListener("deviceready", onDeviceReady, true);
@@ -81,12 +78,21 @@
          {
             navigator.app.exitApp();
          }
-   
+        function loginUser(){
+            var response ="test" ;
+            
+             /*$.post("http://localhost/server/loginOwner.php", {email:email1, password:password1 }, function(data){
+                  
+                response = data;
+
+             } );*/
+            return response;
+        }
     </script>
     </head>
 
 
-<body onload="ownerLoggedin()">
+<body >
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
            <span class="hamburger" onclick="openNav()">&#9776;</span>
@@ -94,7 +100,7 @@
               <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
 
-                 
+
                      <div id="accordion" class="accord">
                          <a><h4><img src="../icons/user.png"> <span id="username">User Controls</span></h4></a>
                               <div>
@@ -102,70 +108,70 @@
                                   <a href="signup.html"><span class="glyphicon glyphicon-user"></span> Register</a>
                                 </ul>
                               </div>
-                         
+
                          <a><h4><img src="../icons/list.png"> Navigate</h4></a>
                               <div>
                                 <ul>
                                   <a href="../index.html">Go Home</a>
                                   <a href="#">Services</a>
                                 </ul>
-                              </div> 
-                         
-    
-                         
+                              </div>
 
-                    </div>                   
+
+
+
+                    </div>
             </div>
                   <span class="hamburger1 pull-right">
-                   <span>Car Hire <img src="../icons/tourist.png"> </span>  Mobile 
+                   <span>Car Hire <img src="../icons/tourist.png"> </span>  Mobile
                  </span>
       </div>
     </nav>
-    
+
 <div class="container">
   <div class="row">
   	<div class="col-md-10">
         <div id="statu"></div>
-    
+
           <form class="form-horizontal" id="logOwnerForm">
           <fieldset>
             <div id="legend">
-              <legend class="">Login first to Hire a car</legend>
+              <legend >Login first to Hire a car</legend>
             </div>
             <div class="control-group">
               <label class="control-label" for="username">Email</label>
               <div class="controls">
-                <input type="email" id="email" name="email" placeholder="" class="form-control input-lg">
+                <input type="email" id="email"  placeholder="" class="form-control input-lg">
                 <p class="help-block">Email can contain any letters or numbers, without spaces</p>
               </div>
             </div>
-         
+
             <div class="control-group">
               <label class="control-label" for="password">Password</label>
               <div class="controls">
-                <input type="password" id="password" name="password" placeholder="" class="form-control input-lg">
+                <input type="password" id="password" placeholder="" class="form-control input-lg">
                 <p class="help-block">Password should be at least 6 characters</p>
               </div>
             </div>
-         
-         
+
+
             <div class="control-group">
               <!-- Button -->
               <div class="controls">
-                <button type="button" id="loginOwner" class="btn btn-success"><span class="glyphicon glyphicon-log-in"></span>  Login</button><span>  </span>  
+                <button type="button" id="loginOwner" class="btn btn-success"><span class="glyphicon glyphicon-log-in"></span>  Login</button><span>  </span>
               </div>
             </div><br/>
-              
+
             <div class="control-group">
               <!-- Button -->
               <div class="controls">
                 <a href="signup.html" class="btn btn-danger"><span class="glyphicon glyphicon-user"></span>  Create Account</a>
               </div>
-            </div>             
+            </div>
           </fieldset>
         </form>
-    
-    </div> 
+
+    </div>
   </div>
 </div>
 
