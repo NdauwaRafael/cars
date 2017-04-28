@@ -6,7 +6,7 @@
       "projectTypeName": "com.intel.xdk.projecttype.jsapp",
       "src": "jsapp/template-blank-cordova-ad-project/sample.zip",
       "projectGuid": "0b6e0704-7ab4-4bbf-97fe-7352aab1e6c5",
-      "lastModifiedDate": 1490178042951,
+      "lastModifiedDate": 1492371168045,
       "creationDate": 1490177505150
     },
     "XDK-app-designer": "true",
@@ -77,6 +77,115 @@
         "name": "Splashscreen",
         "description": "Cordova Splashscreen Plugin",
         "checksum": "47137083"
+      },
+      {
+        "id": "cordova-plugin-device-orientation",
+        "name": "Device Orientation",
+        "version": "1.0.3",
+        "originType": "cordova.io",
+        "origin": "cordova-plugin-device-orientation",
+        "gitref": "",
+        "paramvals": {},
+        "sourceLocation": "plugins/cordova-plugin-device-orientation",
+        "selectedState": "Included",
+        "checksum": "bf366d3e",
+        "dependsOn": [],
+        "topLevel": true,
+        "permissions": {
+          "android:name": [
+            "android.permission.ACCESS_COARSE_LOCATION",
+            "android.permission.ACCESS_FINE_LOCATION"
+          ]
+        },
+        "description": "Cordova Device Orientation Plugin",
+        "data": {},
+        "dependedBy": []
+      },
+      {
+        "id": "cordova-plugin-compat",
+        "name": "Compat",
+        "version": "1.0.0",
+        "originType": "cordova.io",
+        "origin": "cordova-plugin-compat",
+        "gitref": "",
+        "paramvals": {},
+        "sourceLocation": "plugins/cordova-plugin-compat",
+        "selectedState": "Included",
+        "checksum": "61c62eb",
+        "dependsOn": [],
+        "topLevel": false,
+        "permissions": {},
+        "description": "Cordova Compatibility Plugin",
+        "data": {},
+        "dependedBy": [
+          "cordova-plugin-geolocation"
+        ],
+        "custom": "true"
+      },
+      {
+        "id": "cordova-plugin-geolocation",
+        "name": "Geolocation",
+        "version": "2.2.0",
+        "originType": "cordova.io",
+        "origin": "cordova-plugin-geolocation",
+        "gitref": "",
+        "paramvals": {},
+        "sourceLocation": "plugins/cordova-plugin-geolocation",
+        "selectedState": "Included",
+        "checksum": "ec466374",
+        "dependsOn": [
+          "cordova-plugin-compat"
+        ],
+        "topLevel": true,
+        "permissions": {
+          "android:name": [
+            "android.permission.ACCESS_COARSE_LOCATION",
+            "android.permission.ACCESS_FINE_LOCATION"
+          ]
+        },
+        "description": "Cordova Geolocation Plugin",
+        "data": {},
+        "dependedBy": []
+      },
+      {
+        "id": "cordova-plugin-globalization",
+        "name": "Globalization",
+        "version": "1.0.3",
+        "originType": "cordova.io",
+        "origin": "cordova-plugin-globalization",
+        "gitref": "",
+        "paramvals": {},
+        "sourceLocation": "plugins/cordova-plugin-globalization",
+        "selectedState": "Included",
+        "checksum": "8290055f",
+        "dependsOn": [],
+        "topLevel": true,
+        "permissions": {},
+        "description": "Cordova Globalization Plugin",
+        "data": {},
+        "dependedBy": []
+      },
+      {
+        "id": "cordova-plugin-network-information",
+        "name": "Network Information",
+        "version": "1.2.1",
+        "originType": "cordova.io",
+        "origin": "cordova-plugin-network-information",
+        "gitref": "",
+        "paramvals": {},
+        "sourceLocation": "plugins/cordova-plugin-network-information",
+        "selectedState": "Included",
+        "checksum": "9d8331a4",
+        "dependsOn": [],
+        "topLevel": true,
+        "permissions": {
+          "android:name": [
+            "android.permission.ACCESS_NETWORK_STATE"
+          ]
+        },
+        "description": "Cordova Network Information Plugin",
+        "data": {},
+        "dependedBy": []
       }
     ],
     "buildConfigurations": {
@@ -88,10 +197,11 @@
           "android-minSdkVersion": "14",
           "android-targetSdkVersion": "21",
           "android-installLocation": "auto",
-          "android-signed": true
+          "android-signed": true,
+          "Fullscreen": false
         },
         "isActive_": true,
-        "certificateId_": "",
+        "certificateId_": "qILfWhjmjUusAJPvXzpJpw2",
         "appName_": "Cars",
         "appID_": "xdk.intel.blank.ad.template.crosswalk",
         "appAccess_": {
@@ -108,7 +218,8 @@
             "geo:*",
             "market:*"
           ],
-          "navigation": []
+          "navigation": [],
+          "properties": {}
         },
         "icons_": [],
         "splashes_": [],

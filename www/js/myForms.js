@@ -159,6 +159,7 @@ function loggin(field1, field2){
                 });
             
     
+       
         
 $("#addCar").click(function(){
     $('#imagearea').load('addCar.html');

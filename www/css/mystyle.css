@@ -95,3 +95,19 @@ body {
              padding-left: 0px;
              
         }
+
+        .accor h4 {
+            font-size: 90%;
+        }
+      .accor ul {
+            padding-left: 10px;
+            margin-left: 2px;
+          
+        }
+         .accor li {
+            font-size: 90%;
+            list-style: none;
+             margin-left: 0px;
+             padding-left: 0px;
+             
+        }

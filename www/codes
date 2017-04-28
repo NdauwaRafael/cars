@@ -1,0 +1,40 @@
+var jsonResult = [{
+    "Id": 1,
+    "OrderInList": 1},
+{
+    "Id": 2,
+    "OrderInList": 2},
+{
+    "Id": 4,
+    "OrderInList": 3}
+]
+
+$('#orderInList').attr('enabled', 'true');
+$.each(jsonResult, function() {
+   $('#orderInList').append(
+        $("<option></option>").text(this.Id).val(this.OrderInList);
+   );
+});​
+
+$.getJSON("/Json/GetOrderSelectList?parentCategoryId=" + postData, function(jsonResult) {
+    $('#orderInList').attr('enabled', 'true');
+    $.each(jsonResult, function() {
+        $('#orderInList').append(
+            $("<option></option>").text(this.Id).val(this.OrderInList)
+        );
+    });
+});​
+
+<div id="dataDiv" data-num="">click div</div>
+
+<script>
+var jsonData = { "name": "name1" };
+
+$(document).ready(function () {        
+    $("#dataDiv").data("num",jsonData);
+    $("#dataDiv").on("click", function () {
+        console.log($(this).data("num"));
+    });
+});
+</script>
+

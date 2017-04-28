@@ -1,19 +1,35 @@
-    <script src="../js/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="../js/jquery.min.js"></script>
     <script src="../js/jquery-ui.min.js"></script>
-<script>
-  $( function() {
-    $( "#cars" ).accordion({heightStyle: 'panel',
-                                         event: "click",
-                                        active: false,
-                                        collapsible: true,
-                                        autoHeight: false
-        
-    });
-  } );
-  </script>
-</head>
-<body>
- 
-<div id="cars">
+   <script src="../js/myForms.js"></script>
+<script>  
+        /*Load Cars added by Owner*/
+                $.getJSON('http://localhost/server/load.php', { get_param: 'value' }, function(data) {
+                    var car = '';
+                    $.each(data, function(index, element) {
+                        var id = element.id;
+                        var model = element.model;
+                        var plate = element.plateno;
+                        var image = element.image;
+                        var status = element.status;
+                        
+        $('#cardetails').append('<div class="card" style="margin:0.4em; padding:0.4em; background-color:#e8f5e9;"><div class="card-block"><h4 class="card-title">'+model+'</h4><p class="card-text">A '+model+' '+ plate+'</p><button id="view_btn'+id+'" data-car-id="78" class="btn btn-primary">View</button> <div id="test"></div> </div></div>');
+                 
+                        $("#view_btn"+id).click(function(){
+                            $('#item').html(model);
+                        });
+                              
 
+                    });
+                                          
+                     
+                });     
+    
+
+   
+  </script>
+ 
+<div id="cars" >
+   <div id="item"></div>
+ <div id="cardetails" style="width:100%;"></div>
 </div>
