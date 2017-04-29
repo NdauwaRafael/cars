@@ -26,6 +26,9 @@
 
     </style>
     <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+     <script src="js/myForms.js"></script> 
+     <link rel="stylesheet" href="css/mystyle.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     <script src="js/bootstrap.js"></script>
     <link rel="stylesheet" href="css/app.css">   
@@ -38,33 +41,39 @@
 
 
 <body style="background-image: url(images/bg.jpg); background-size: cover; padding: -15px">
-   <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle pull-left" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-    <div class="pull-right">
-       <a class="navbar-brand" href="#">Car Hire</a>  
-    </div>
-     
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="index.html">Home</a></li>
-        <li><a href="#">Explore</a></li>
-        <li><a href="#">FAQs</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        <li><a href="home.html"><span class="glyphicon glyphicon-log-in"></span> Home</a></li>
-        <li><a href="nav.html"><span class="glyphicon glyphicon-log-in"></span> nav</a></li>
-      </ul>
-    </div>
-  </div>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+           <span class="hamburger" onclick="openNav()">&#9776;</span>
+             <div id="mySidenav" class="sidenav">
+              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+
+
+                     <div id="accordion" class="accord">
+                         <a><h4><img src="icons/user.png"> <span id="username">User Controls</span></h4></a>
+                              <div>
+                                <ul>
+                                  <a href="signup.html"><span class="glyphicon glyphicon-user"></span> Register</a>
+                                </ul>
+                              </div>
+
+                         <a><h4><img src="icons/list.png"> Navigate</h4></a>
+                              <div>
+                                <ul>
+                                  <a href="index.html">FAQS</a>
+                                  <a href="#">Services</a>
+                                </ul>
+                              </div>
+
+
+
+
+                    </div>
+            </div>
+                  <span class="hamburger1 pull-right">
+                   <span>Car Hire <img src="icons/tourist.png"> </span>  Mobile
+                 </span>
+      </div>
     </nav>
     
     <div class="imagearea">  
