@@ -1,0 +1,60 @@
+<ol class="breadcrumb">
+<li class="disabled" ><span class="glyphicon glyphicon-chevron-left"></span></li>    
+  <li><a href="#" id="hom"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+  <li><a href="#" id="view"><span class="glyphicon glyphicon-list-alt"></span> View Cars</a></li>
+  <li class="active"><span class="glyphicon glyphicon-paperclip"></span> Car</li>
+</ol>
+
+<div class="panel panel-default">
+  <div class="panel-heading"><div id="title"></div></div>
+  <div class="panel-body">
+
+      
+<table class="table">
+ <tr>
+  <td id="name"></td>
+  <td id="plate"></td>
+  <td id="status"></td> 
+</tr>
+</table>
+      
+      
+      
+ <form class="form-horizontal">
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Car Model</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="carmodel" placeholder="Car Model">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">PLate Number</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="carplatenumber" placeholder="Plate Number">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-danger">Modify Details</button>
+    </div>
+  </div>
+</form>     
+      
+      
+      
+  </div>
+</div>
+
+<script>
+  $('#view').click(function(){
+    $('#imagearea').load('viewCar.html');  
+  });
+    
+    $('#hom').click(function(){
+        $('#imagearea').html(''); 
+    })
+    
+    
+</script>
+   

@@ -32,6 +32,18 @@
     "dependent_plugins": {
         "cordova-plugin-compat": {
             "PACKAGE_NAME": "HelloCordova"
+        },
+        "cordova-plugin-device-orientation": {
+            "PACKAGE_NAME": "HelloCordova"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "HelloCordova"
+        },
+        "cordova-plugin-globalization": {
+            "PACKAGE_NAME": "HelloCordova"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "HelloCordova"
         }
     }
 }

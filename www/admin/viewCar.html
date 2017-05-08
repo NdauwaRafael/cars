@@ -16,7 +16,16 @@
         $('#cardetails').append('<div class="card" style="margin:0.4em; padding:0.4em; background-color:#e8f5e9;"><div class="card-block"><h4 class="card-title">'+model+'</h4><p class="card-text">A '+model+' '+ plate+'</p><button id="view_btn'+id+'" data-car-id="78" class="btn btn-primary">View</button> <div id="test"></div> </div></div>');
                  
                         $("#view_btn"+id).click(function(){
-                            $('#item').html(model);
+                           $.post('http://localhost/server/car.php', {plate1:plate}, function(data){
+                             $('#cardetails').load('car.html', function(){
+                                 $('#name').html(model);
+                                 $('#plate').html(plate);
+                                 $('#status').html(status);
+                                 $('#title').html(model);
+                                 $('#carmodel').val(model);
+                                 $('#carplatenumber').val(plate);
+                             });  
+                           });
                         });
                               
 
@@ -25,7 +34,6 @@
                      
                 });     
     
-
    
   </script>
  
