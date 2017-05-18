@@ -1,4 +1,3 @@
-alltrucks.html
 
 <ol class="breadcrumb">
 <li class="disabled" ><span class="glyphicon glyphicon-chevron-left"></span></li>    
@@ -24,13 +23,14 @@ alltrucks.html
                  
                         $("#view_btn"+id).click(function(){
                            $.post('http://localhost/server/car.php', {plate1:plate}, function(data){
-                             $('#cardetails').load('car.html', function(){
-                                 $('#name').html(model);
-                                 $('#plate').html(plate);
-                                 $('#status').html(status);
-                                 $('#title').html(model);
+                             $('#cardetails').load('carinfo/hirecar.html', function(){
+                                 $("#title").html(model + ' ' + plate);
+                                 $('#name').val(model);
+                                 $('#plate').val(plate);
+                                 $('#status').val(status);
                                  $('#carmodel').val(model);
                                  $('#carplatenumber').val(plate);
+                                 $("#carimage").attr('src',image);
                              });  
                            });
                         });

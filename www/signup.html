@@ -104,15 +104,12 @@ input::-webkit-input-placeholder {
                 var confirmpassword1 = $('#password_confirm').val();
 
                 if(username1==''|| email1==''|| password1==''|| confirmpassword1==''){
-                    alert('fill in empty fields');
+                    $('#status').html('<div class="alert alert-danger" role="alert">Fill in empty fields</div>');
                 }else{
-                    if( $.post('http://localhost/server/register.php',{username:username1, email:email1, password:password1, confirmpassword:confirmpassword1}, function(data){
-
-                    })){
-                     alert('successfuly added');
-                        $('#status').html('<div class="alert alert-success" role="alert"><i class="fa fa-user-plus" aria-hidden="true"></i> successfuly added!! </div>');
-                        $('#regForm')[0].reset();                      
-                    }
+                     $.post('http://localhost/server/register.php',{username:username1, email:email1, password:password1, confirmpassword:confirmpassword1}, function(data){
+                          $('#regForm')[0].reset(); 
+                    $('#status').html(data);
+                    })
                    
                 }
          }); 

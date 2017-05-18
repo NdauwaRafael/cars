@@ -1,3 +1,18 @@
+<style>
+    #carBody {
+        background:rgba(0, 0, 0, 0.8);
+        color: azure !important;
+        border-radius: 25px;
+        padding: 6%;
+    }
+    .panel-heading {
+        background-color: darkcyan !important;
+        color: azure !important;
+        font-size: 0.9em;
+    }  
+    
+</style>
+
 <ol class="breadcrumb">
 <li class="disabled" ><span class="glyphicon glyphicon-chevron-left"></span></li>    
   <li><a href="#" id="hom"><span class="glyphicon glyphicon-home"></span> Home</a></li>
@@ -5,11 +20,10 @@
   <li class="active"><span class="glyphicon glyphicon-paperclip"></span> Car</li>
 </ol>
 
-<div class="panel panel-default">
+<div class="panel " id="carBody">
   <div class="panel-heading"><div id="title"></div></div>
-  <div class="panel-body">
-
-      
+  <div class="panel-body" >
+     
 <table class="table">
  <tr>
   <td id="name"></td>
@@ -17,8 +31,11 @@
   <td id="status"></td> 
 </tr>
 </table>
-      
-      
+<center>     
+<div id="targetLayer">
+    <img src="http://localhost/server/images/img.jpg" style="border-radius: 20px; width:80%;" id="carimg" >  
+ </div> 
+</center>     
       
  <form class="form-horizontal">
   <div class="form-group">
@@ -39,14 +56,26 @@
       <button type="submit" class="btn btn-danger">Modify Details</button>
     </div>
   </div>
-</form>     
-      
-      
+</form>
+
+<br>
+<h5>Add car image</h5>      
+  <hr>    
+            <form id="uploadForm" action="http://localhost/server/imageCar.php" method="post">
+				  <div class="form-group">
+                      <input type="text" class="form-control" id="carplate" placeholder="Plate Number" style="visibility:hidden">
+				    <label for="exampleInputFile">Truck image</label>
+				    <input type="file" name="carImage" id="inputImagePath">
+				    <p class="help-block">It is optional to add truck image, but it is vital for customers to see the trucks.</p>
+				  </div>
+				  <button class="btn btn-success" id="addTruckBtn">Add Now</button>                
+            </form>     
       
   </div>
 </div>
 
 <script>
+    
   $('#view').click(function(){
     $('#imagearea').load('viewCar.html');  
   });
@@ -54,6 +83,26 @@
     $('#hom').click(function(){
         $('#imagearea').html(''); 
     })
+    
+var plt = $("#carplate").val();    
+  $("#uploadForm").on('submit',(function(e) {
+    e.preventDefault();
+    $.ajax({
+          url: "http://localhost/server/imageCar.php",
+      type: "POST",
+      data:new FormData(this),
+      contentType: false,
+          cache: false,
+      processData:false,
+      success: function(data)
+        {
+      $("#targetLayer").html(data);
+        },
+        error: function() 
+        {
+        }           
+     });
+  }));    
     
     
 </script>
