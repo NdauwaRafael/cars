@@ -16,7 +16,14 @@
     
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
-      
+         $.get( "http://localhost/server/check_customer.php", function( data ) {
+          var check = data;
+            if(check==0){
+                window.location.href='login.html';
+            }else{
+              return false;
+            }
+});
       
   $( function() {
       
@@ -71,6 +78,7 @@
         <script src="js/jquery.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>
      <link rel="stylesheet" href="css/mystyle.css">
+    
 
     <link rel="stylesheet" href="css/bootstrap.css">
     <script src="js/bootstrap.js"></script>
@@ -116,9 +124,9 @@
                          <a><h4><img src="icons/speech-bubble.png"> My Requests</h4></a>
                       <div>
                         <ul>
-                          <li><a>New</a></li>
-                          <li><a>Accepted</a></li>
-                          <li><a>Report</a></li>
+                          <li id="new_requests"><a>New</a></li>
+                          <li id="accepted_requests"><a>Accepted</a></li>
+                          <li id="declined_requests"><a>Declined</a></li>    
                         </ul>
                       </div>
                          
@@ -140,12 +148,24 @@
     </nav>     
     
  <div class="imagearea">           
-  <div class="col-xs-12" style="background-color:rgba(0, 0, 0, 0.5); color:#f5f5f5 !important; margin-top: -20px;  min-height: 100vh;" >
+  <div class="col-xs-12" style="background-color:rgba(0, 0, 0, 0.5); color:#f5f5f5 !important;  min-height: 100vh;" >
       <div id="cardetails" style="color:#33691e !important;"></div>
  </div>   
             
         </div>
     
+<script>
+  $("#new_requests").click(function(){
+     $("#cardetails").load("requests/new_requests.html"); 
+  });
 
+  $("#accepted_requests").click(function(){
+     $("#cardetails").load("requests/accepted_request.html"); 
+  });
+    
+  $("#declined_requests").click(function(){
+     $("#cardetails").load("requests/declined_requests.html"); 
+  });     
+</script>
 </body>
 </html>

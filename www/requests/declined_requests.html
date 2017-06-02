@@ -1,0 +1,37 @@
+<ol class="breadcrumb">
+<li class="disabled" ><span class="glyphicon glyphicon-chevron-left"></span></li>    
+  <li><a href="#" id="view"><span class="glyphicon glyphicon-list-alt"></span> View Cars</a></li>
+  <li class="active"><span class="glyphicon glyphicon-paperclip"></span> Car</li>
+</ol>
+<script>  
+        /*Load declned requests by the owner*/
+                $.getJSON('http://localhost/server/customer_declined_requests.php', { get_param: 'value' }, function(data) {
+                    var request = '';
+                    $.each(data, function(index, element) {
+                        var id = element.id;
+                        var plate = element.carplate;
+                        var date = element.date;
+                        var days = element.days;
+                        var description = element.description;
+
+                        
+        $('#declined_request_details').append(
+            '<div class="panel panel-dangerpanel panel-danger"><div class="panel-heading"><strong>'+date+' '+plate+' (Declined)</strong></div><div class="panel-body"><p id="description">Requested this car for '+days+' with/without a special request: <strong>'+description+'</strong></p></div></div>'
+        );
+                 
+  
+
+                    });
+                                          
+                     
+                });     
+    
+   $('#view').click(function(){
+    $('#cardetails').load('carinfo/allcars.html');  
+  });  
+  </script>
+ 
+<div id="cars" >
+   <div id="item"></div>
+ <div id="declined_request_details" style="width:100%;"></div>
+</div>

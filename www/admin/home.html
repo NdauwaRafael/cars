@@ -90,9 +90,9 @@
                          <a><h4><img src="../icons/speech-bubble.png"> My Requests</h4></a>
                       <div>
                         <ul>
-                          <li><a>New</a></li>
-                          <li><a>Accepted</a></li>
-                          <li><a>Report</a></li>
+                          <li id="new_request_btn"><a>New</a></li>
+                          <li id="accepted_request_btn"><a>Accepted</a></li>
+
                         </ul>
                          </div>
                          
@@ -120,6 +120,14 @@
             
         </div>
     
-
+<script>
+  $("#new_request_btn").click(function(){
+      $("#imagearea").load("requests/new_requests.html");
+  }) 
+  
+  $("#accepted_request_btn").click(function(){
+      $("#imagearea").load("requests/accepted_request.html");
+  })
+</script>
 </body>
 </html>

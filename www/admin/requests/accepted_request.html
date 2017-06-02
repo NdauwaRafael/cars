@@ -1,0 +1,47 @@
+<ol class="breadcrumb">
+<li class="disabled" ><span class="glyphicon glyphicon-chevron-left"></span></li>    
+  <li><a href="#" id="view"><span class="glyphicon glyphicon-list-alt"></span> View Cars</a></li>
+  <li class="active"><span class="glyphicon glyphicon-paperclip"></span> Car</li>
+</ol>
+<script>  
+        /*Load Cars added by Owner*/
+                $.getJSON('http://localhost/server/owner_accepted_request.php', { get_param: 'value' }, function(data) {
+                    var request = '';
+                    $.each(data, function(index, element) {
+                        var id = element.id;
+                        var plate = element.carplate;
+                        var date = element.date;
+                        var days = element.days;
+                        var description = element.description;
+
+                        
+        $('#accepted_request_details').append(
+            '<div class="panel panel-info"><div class="panel-heading"><strong>'+date+' Request for '+plate+' (Not confirmed yet)</strong></div><div class="panel-body"><p id="description">Requested this car for '+days+' with/without a special request: <strong>'+description+'</strong></p><div id="status'+id+'"></div><p><a class="btn btn-primary" id="complete'+id+'" role="button">Complete Now!!</a> </p></div></div>'
+        );
+                 
+  
+$("#complete"+id).click(function(){
+    var state ="Completed";
+    $.post("http://localhost/server/request_complete.php",{plate1: plate, status:state}, function(data){
+        $("#status"+id).html(data);
+    })
+})
+
+
+   
+                    
+                    
+                    });
+                                          
+                     
+                });     
+    
+   $('#view').click(function(){
+    $('#cardetails').load('carinfo/allcars.html');  
+  });  
+  </script>
+ 
+<div id="cars" >
+   <div id="item"></div>
+ <div id="accepted_request_details" style="width:100%;"></div>
+</div>

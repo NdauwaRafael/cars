@@ -10,32 +10,65 @@
     <div id="concept">
        <img src="images/demo.jpg" id="carimage" style="border-radius: 20px; width:80%; margin: 5%;">
       </div>
+      <div id="book_status"></div><br>
       <div class="form-group">
         <input class="form-control" id="name" type="text" placeholder="Disabled input here..." disabled>
       </div>
       <div class="form-group">
        <input class="form-control" id="plate" type="text" placeholder="Disabled input here..." disabled>
       </div>
-      <div class="form-group">
-       <input class="form-control" id="" type="text" placeholder="Disabled input here..." disabled>
+      <div class="form-group has-success">
+       <input class="form-control" id="availability" type="text" placeholder="Disabled input here..." disabled>
       </div>
 
       <div class="form-group">
         <label>Number of Days</label>  
-            <select class="form-control">
-              <option>--[SELECT DAYS]---</option>
-              <option>1 day</option>
-              <option>2 days</option>
-              <option>3 days</option>
-              <option>1 Week</option>
+            <select id="days" class="form-control">
+              <option value="">--[SELECT DAYS]---</option>
+              <option value="1 day">1 day</option>
+              <option value="2 days">2 days</option>
+              <option value="3 days">3 days</option>
+              <option value="4 days">4 days</option>
+              <option value="5 days">5 days</option>
+              <option value="6 days">6 days</option>
+              <option value="1 week">1 Week</option>
             </select>
       </div>      
     
   <div class="form-group">
     <label>Special request(optional)</label>
-    <textarea class="form-control" rows="4"></textarea>
+    <textarea id="request" class="form-control" rows="4"></textarea>
   </div>    
     
-<button type="submit" class="btn btn-lg btn-success">Book Now</button>
+<button type="button" id="book_car_btn" class="btn btn-lg btn-success">Book Now</button>
+<h4>Contact the car Dealer/Owner</h4>
+<hr>
+<h4 id="ownername"></h4>
+<h4 id="owneremail"></h4>      
   </div>
 </div>
+
+
+
+<script>
+  $('#view').click(function(){
+    $('#cardetails').load('carinfo/allcars.html');  
+  });
+    
+    $("#book_car_btn").click(function(){
+        var Plate = $("#plate").val();
+        var Days = $("#days").val();
+        var Request = $("#request").val();
+        
+        if(Days==''|| Plate==''){
+            $("#book_status").html('<div class="alert btn-lg btn-warning" >Specify Number of Days before submitting to avoid this error from occuring!!</div>');
+        }else{
+            $.post("http://localhost/server/user_hire.php",
+                   {plate:Plate, days: Days, request: Request }, 
+                  function(data){
+                $("#book_status").html(data);
+            })
+        }
+        
+    });
+</script>

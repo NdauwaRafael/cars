@@ -4,6 +4,31 @@
   <li><a href="#" id="hom"><span class="glyphicon glyphicon-home"></span> Home</a></li>
   <li class="active"><span class="glyphicon glyphicon-list-alt"></span> View Cars</li>
 </ol>
+
+<div class="row">
+ <div class="col-xs-6">
+ <select id="city" class="form-control" onchange="filterCars()">
+  <option value=''>--[SELECT CITY ]--</option>
+  <option value='Mombasa'>Mombasa</option>
+  <option value="Nairobi">Nairobi</option>
+  <option value="Kisumu">Kisumu</option>
+  <option value="Nakuru">Nakuru</option>
+</select>    
+</div>
+
+     <div class="col-xs-6">
+ <select id="street" class="form-control" onchange="filterCars()">
+  <option value=" ">---[SELECT STREET]---</option>
+  <option value=" ">2</option>
+  <option>3</option>
+  <option>4</option>
+  <option>5</option>
+</select>    
+</div>
+
+
+</div>
+
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="../js/jquery.min.js"></script>
     <script src="../js/jquery-ui.min.js"></script>
@@ -18,8 +43,13 @@
                         var plate = element.plateno;
                         var image = element.image;
                         var status = element.status;
+                        var owner_email = element.email;
+                        var owner_firstname= element.firstname;
+                        var owner_lastname = element.lastname;
+                        var owner_idno = element.idno;
                         
-        $('#cardetails').append('<div class="card" style="margin:0.4em; padding:0.4em; background-color:#e8f5e9;"><div class="card-block"><h4 class="card-title">'+model+'</h4><p class="card-text">A '+model+' '+ plate+'</p><button id="view_btn'+id+'" data-car-id="78" class="btn btn-primary">View</button> <div id="test"></div> </div></div>');
+        $('#cardetail').append('<div class="card" style="margin:0.4em; padding:0.4em; background-color:#e8f5e9;"><div class="card-block"><img src="'+image+'" width="30%" style="padding-right: 2%;" class="img-circle pull-left"><h4 class="card-title">'+model+'</h4><p class="card-text">A '+model+' '+ plate+'</p><button id="view_btn'+id+'" data-car-id="78" class="btn btn-primary">View</button> <div id="test"></div> </div></div>');
+                       
                  
                         $("#view_btn"+id).click(function(){
                            $.post('http://localhost/server/car.php', {plate1:plate}, function(data){
@@ -27,24 +57,79 @@
                                  $("#title").html(model + ' ' + plate);
                                  $('#name').val(model);
                                  $('#plate').val(plate);
-                                 $('#status').val(status);
+                                 $('#availability').val(status);
                                  $('#carmodel').val(model);
                                  $('#carplatenumber').val(plate);
                                  $("#carimage").attr('src',image);
+                                 $("#ownername").text(owner_firstname +' '+ owner_lastname);
+                                 $("#owneremail").text(owner_email);
                              });  
                            });
                         });
                               
 
-                    });
-                                          
+                    });                                          
                      
                 });     
     
+  function filterCars(){
+        var City = document.getElementById('city').value;
+        var Street = document.getElementById('street').value;
+
+
+$.post(
+    'http://localhost/server/filter_car.php',
+    { city:City, street:Street },
+    function(data) {
+        $("#item").html(data);
+               
+       var response = $.parseJSON($("#item").html());
+         var car = '';
+        $('#cardetail').html("");
+        $.each(response, function(index, element) { 
+                        var id = element.id;
+                        var model = element.model;
+                        var plate = element.plateno;
+                        var image = element.image;
+                        var status = element.status;
+                        var owner_email = element.email;
+                        var owner_firstname= element.firstname;
+                        var owner_lastname = element.lastname;
+                        var owner_idno = element.idno;
+            
+                        
+        $('#cardetail').append('<div class="card" style="margin:0.4em; padding:0.4em; background-color:#e8f5e9;"><div class="card-block"><img src="'+image+'" width="30%" style="padding-right: 2%;" class="img-circle pull-left"><h4 class="card-title">'+model+'</h4><p class="card-text">A '+model+' '+ plate+'</p><button id="view_btn'+id+'" data-car-id="78" class="btn btn-primary">View</button> <div id="test"></div> </div></div>');
+             $("#item").html('');
+            
+                        $("#view_btn"+id).click(function(){
+                           $.post('http://localhost/server/car.php', {plate1:plate}, function(data){
+                             $('#cardetails').load('carinfo/hirecar.html', function(){
+                                 $("#title").html(model + ' ' + plate);
+                                 $('#name').val(model);
+                                 $('#plate').val(plate);
+                                 $('#availability').val(status);
+                                 $('#carmodel').val(model);
+                                 $('#carplatenumber').val(plate);
+                                 $("#carimage").attr('src',image);
+                                 $("#ownername").text(owner_firstname +' '+ owner_lastname);
+                                 $("#owneremail").text(owner_email);
+                             });  
+                           });
+                        });
+                                          
+            
+            
+        });
+
+
+    }
+);    
+      return false;
+  }    
    
   </script>
  
 <div id="cars" >
-   <div id="item"></div>
- <div id="cardetails" style="width:100%;"></div>
+       <div id="item"></div>
+ <div id="cardetail" style="width:100%;"></div>
 </div>

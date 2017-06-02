@@ -11,9 +11,10 @@
                         var model = element.model;
                         var plate = element.plateno;
                         var image = element.image;
+                        var email = element.email;
                         var status = element.status;
                         
-        $('#cardetails').append('<div class="card" style="margin:0.4em; padding:0.8em; border-radius:15px; background:#d7ccc8; color: #3e2723 !important;;"><div class="card-block"><img src="icons/steering_wheel.png" class="pull-left"><h4 class="card-title">'+model+'</h4><p class="card-text">A '+model+' '+ plate+'</p><button id="view_btn'+id+'" data-car-id="78" class="btn btn-primary">View</button> </div></div>');
+        $('#cardetails').append('<div class="card" style="margin:0.4em; padding:0.8em; border-radius:15px; background:#d7ccc8; color: #3e2723 !important;;"><div class="card-block"><img src="'+image+'" width="30%" style="padding-right: 2%;" class="img-circle pull-left"><h4 class="card-title">'+model+'</h4><p class="card-text">A '+model+' '+ plate+'</p><button id="view_btn'+id+'" data-car-id="78" class="btn btn-primary">View</button> </div></div>');
                  
                         $("#view_btn"+id).click(function(){
                            $.post('http://localhost/server/car.php', {plate1:plate}, function(data){
@@ -25,16 +26,19 @@
                                  $('#carmodel').val(model);
                                  $('#carplatenumber').val(plate);
                                  $("#carimg").attr('src', image);
-                             });  
-                           });
-                        });
-                                                
-                if (id=='') {
+                                 
+                                 
+                 if (id=='') {
 
                 }else{
                       $.post('http://localhost/server/write.php', {id1:id}, function(data){
                       });
-                }                             
+                }                                  
+                             });  
+                           });
+                        });
+                                                
+                           
 
                     });
                                           

@@ -4,11 +4,13 @@ $(document).ready(function(){
     $("#regCar").click(function(){
         var models = $("#carmodel").val();
         var plates = $("#platenumber").val();
+        var citys = $("#city").val();
+        var streets = $("#street").val();
         
         if(models =='' || plates==''){
             $('#mstatus').html('<div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Fill in Empty fields and proceed</div>');                     
         }else{
-            $.post('http://localhost/server/registerCar.php', {model:models, plate:plates}, function(data){
+            $.post('http://localhost/server/registerCar.php', {model:models, plate:plates, city:citys, street:streets}, function(data){
                 $('#mstatus').html(data);
                 $("#regcarform")[0].reset();
             });
@@ -36,9 +38,18 @@ $(document).ready(function(){
            <div class="form-group">
             <label for="plate number">Plate Number</label>
             <input type="text" class="form-control" id="platenumber" placeholder="add Plate NUmber">
-          </div>           
-
-
+          </div> 
+            
+           <div class="form-group">
+            <label for="plate number">City</label>
+            <input type="text" class="form-control" id="city" placeholder="add Plate NUmber">
+          </div> 
+            
+            
+           <div class="form-group">
+            <label for="plate number">Street</label>
+            <input type="text" class="form-control" id="street" placeholder="add Plate NUmber">
+          </div> 
 
           <button type="button" id="regCar" class="btn btn-default">Add Now!!</button>
         </form>
